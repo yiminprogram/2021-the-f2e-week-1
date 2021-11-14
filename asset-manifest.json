@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.js": "/2021-the-f2e-week-1/static/js/main.1ebb88a5.chunk.js",
+    "main.js.map": "/2021-the-f2e-week-1/static/js/main.1ebb88a5.chunk.js.map",
+    "runtime-main.js": "/2021-the-f2e-week-1/static/js/runtime-main.aec2723b.js",
+    "runtime-main.js.map": "/2021-the-f2e-week-1/static/js/runtime-main.aec2723b.js.map",
+    "static/css/2.4a5835b4.chunk.css": "/2021-the-f2e-week-1/static/css/2.4a5835b4.chunk.css",
+    "static/js/2.3fbb8d21.chunk.js": "/2021-the-f2e-week-1/static/js/2.3fbb8d21.chunk.js",
+    "static/js/2.3fbb8d21.chunk.js.map": "/2021-the-f2e-week-1/static/js/2.3fbb8d21.chunk.js.map",
+    "index.html": "/2021-the-f2e-week-1/index.html",
+    "static/css/2.4a5835b4.chunk.css.map": "/2021-the-f2e-week-1/static/css/2.4a5835b4.chunk.css.map",
+    "static/js/2.3fbb8d21.chunk.js.LICENSE.txt": "/2021-the-f2e-week-1/static/js/2.3fbb8d21.chunk.js.LICENSE.txt",
+    "static/media/attraction.13efc9a9.jpg": "/2021-the-f2e-week-1/static/media/attraction.13efc9a9.jpg",
+    "static/media/code.fabed50a.svg": "/2021-the-f2e-week-1/static/media/code.fabed50a.svg",
+    "static/media/food.09ea4e9e.jpg": "/2021-the-f2e-week-1/static/media/food.09ea4e9e.jpg",
+    "static/media/homepage.eee6ca45.jpg": "/2021-the-f2e-week-1/static/media/homepage.eee6ca45.jpg",
+    "static/media/logo.52ca7dbe.svg": "/2021-the-f2e-week-1/static/media/logo.52ca7dbe.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.aec2723b.js",
+    "static/css/2.4a5835b4.chunk.css",
+    "static/js/2.3fbb8d21.chunk.js",
+    "static/js/main.1ebb88a5.chunk.js"
+  ]
+}

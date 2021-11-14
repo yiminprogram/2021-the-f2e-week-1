@@ -1,0 +1,7 @@
+export const Triangle = () => {
+  return (
+    <svg width="20" height="17" viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 0L0 16.1905H20L10 0Z" fill="#FF1D6C" />
+    </svg>
+  );
+};

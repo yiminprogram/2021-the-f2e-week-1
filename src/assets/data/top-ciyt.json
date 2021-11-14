@@ -1,0 +1,37 @@
+[
+  {
+    "id": "Taipei",
+    "city": "臺北市",
+    "picture": "https://www.travel.taipei/image/182690"
+  },
+  {
+    "id": "NewTaipei",
+    "city": "新北市",
+    "picture": "https://www.travel.taipei/image/462"
+  },
+  {
+    "id": "Taoyuan",
+    "city": "桃園市",
+    "picture": "https://newtaipei.travel/content/images/attractions/2423/640x480_a07a6051-b0fd-48a4-bb42-51637e83c6f5.jpg"
+  },
+  {
+    "id": "Taichung",
+    "city": "臺中市",
+    "picture": "https://tourism.chcg.gov.tw/upload/27/2017081610520237847.jpg"
+  },
+  {
+    "id": "Tainan",
+    "city": "臺南市",
+    "picture": "https://swcoast-nsa.travel/image/2570/640x480"
+  },
+  {
+    "id": "Kaohsiung",
+    "city": "高雄市",
+    "picture": "https://khh.travel/image/889/640x480"
+  },
+  {
+    "id": "ChiayiCounty",
+    "city": "嘉義縣",
+    "picture": "https://www.ali-nsa.net/image/824/640x480"
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "id": "attraction",
+    "category": "景點",
+    "value": "attraction"
+  },
+  {
+    "id": "food",
+    "category": "美食",
+    "value": "food"
+  },
+  {
+    "id": "hotel",
+    "category": "住宿",
+    "value": "hotel"
+  }
+]

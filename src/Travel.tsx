@@ -7,6 +7,7 @@ import FoodHotel from './views/FoodHotel';
 import Traffic from './views/Traffic';
 import Search from './views/Search';
 import Detail from './views/Detail';
+import ErrorPage from './views/ErrorPage';
 import styled from '@emotion/styled';
 import SwiperCore, { Pagination } from 'swiper';
 import 'swiper/swiper.min.css';
@@ -39,7 +40,8 @@ const Travel = () => {
         <Route path="food-hotel" element={<FoodHotel />} />
         <Route path="traffic" element={<Traffic />} />
         <Route path="search" element={<Search />} />
-        <Route path=":id" element={<Detail />} />
+        <Route path="info/:id" element={<Detail />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
       <Footer />
     </Website>

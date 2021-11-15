@@ -149,12 +149,14 @@ const typeList = [
   },
 ];
 
+const initial: TFilter = {
+  type: typeList[0].type,
+  city: cityList[0].value,
+  keyword: '',
+};
+
 const SearchTitle = ({ image }: TProps) => {
-  const [filter, setFilter] = useState<TFilter>({
-    type: typeList[0].type,
-    city: cityList[0].value,
-    keyword: '',
-  });
+  const [filter, setFilter] = useState<TFilter>(initial);
 
   const navigation = useNavigate();
   const handleSearch = () => {
@@ -167,6 +169,8 @@ const SearchTitle = ({ image }: TProps) => {
       pathname: '/search',
       search,
     });
+    window.scrollTo({ top: 700, left: 0 });
+    setFilter(initial);
   };
 
   return (

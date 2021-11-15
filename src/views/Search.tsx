@@ -12,6 +12,7 @@ import {
 import { useLocation } from 'react-router-dom';
 import { TData, EType } from '../types';
 import { getSearch, getType, getCity } from '../utils';
+import NotFoundImage from '../assets/images/not-found.svg';
 
 const Page = styled('div')`
   position: relative;
@@ -24,6 +25,24 @@ const Result = styled('span')(({ theme }) => ({
   margin: '0 1rem 0 0.5rem',
   borderBottom: `3px solid ${theme.palette.primary.main}`,
 }));
+
+const NotFound = styled('div')`
+  height: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+`;
+
+const ImageContainer = styled('div')`
+  flex: 0 1 600px;
+
+  > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`;
 
 const Search = () => {
   const [data, setData] = useState<TData[]>([]);
@@ -54,13 +73,27 @@ const Search = () => {
           位置：
           <Result>{getCity(city)}</Result>
         </Typography>
-        <Grid container spacing={2}>
-          {data.slice((page - 1) * 16, page * 16).map((ele) => (
-            <Grid item xs={12} sm={6} md={4} xl={3} key={ele.id}>
-              <ImageCard {...ele} />
-            </Grid>
-          ))}
-        </Grid>
+        {data.length === 0 ? (
+          <NotFound>
+            <ImageContainer>
+              <img src={NotFoundImage} alt="not-found-imaeg" />
+            </ImageContainer>
+            <Typography
+              variant="h2"
+              sx={{ flex: '0 1 100%', textAlign: 'center' }}
+            >
+              很抱歉，找不到符合此搜尋相關的內容
+            </Typography>
+          </NotFound>
+        ) : (
+          <Grid container spacing={2}>
+            {data.slice((page - 1) * 16, page * 16).map((ele) => (
+              <Grid item xs={12} sm={6} md={4} xl={3} key={ele.id}>
+                <ImageCard {...ele} />
+              </Grid>
+            ))}
+          </Grid>
+        )}
         <Stack direction="row" justifyContent="center">
           <Pagination
             count={Math.ceil(data.length / 16)}

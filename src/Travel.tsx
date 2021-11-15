@@ -5,6 +5,7 @@ import Home from './views/Home';
 import Attraction from './views/Attraction';
 import FoodHotel from './views/FoodHotel';
 import Traffic from './views/Traffic';
+import Search from './views/Search';
 import Detail from './views/Detail';
 import styled from '@emotion/styled';
 import SwiperCore, { Pagination } from 'swiper';
@@ -37,6 +38,7 @@ const Travel = () => {
         <Route path="attractions" element={<Attraction />} />
         <Route path="food-hotel" element={<FoodHotel />} />
         <Route path="traffic" element={<Traffic />} />
+        <Route path="search" element={<Search />} />
         <Route path=":id" element={<Detail />} />
       </Routes>
       <Footer />

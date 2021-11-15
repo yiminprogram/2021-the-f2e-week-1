@@ -4,3 +4,6 @@ export * from './getAuthorizationHeader';
 export * from './getRandomNumber';
 export * from './getTopActivities';
 export * from './getData';
+export * from './getSearch';
+export * from './getType';
+export * from './getCity';

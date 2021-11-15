@@ -7,6 +7,7 @@ import { SxProps } from '@mui/system';
 import { TData } from '../types';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { stringify } from 'querystring';
+import { checkText } from '../utils';
 
 const Card = styled('article')(
   ({ theme }) => ` 
@@ -105,8 +106,16 @@ const ImageCard = (data: TData) => {
       </Typography>
       <Location>
         <Room color="primary" />
-        <Typography variant="h5" color={(theme) => theme.palette.success.main}>
-          {data.address}
+        <Typography
+          variant="h5"
+          color={(theme) => theme.palette.success.main}
+          sx={{
+            textOverflow: 'ellipsis',
+            overflow: 'hidden',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          {checkText(data.address)}
         </Typography>
       </Location>
     </Card>

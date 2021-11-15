@@ -4,10 +4,20 @@ import homepage from '../assets/images/homepage.jpg';
 import attraction from '../assets/images/attraction.jpg';
 import food from '../assets/images/food.jpg';
 import TitleLogo from '../assets/logo/TitleLogo';
-import { Select, MenuItem, Stack, Typography, TextField, Button, FormControl } from '@mui/material';
+import {
+  Select,
+  MenuItem,
+  Stack,
+  Typography,
+  TextField,
+  Button,
+  FormControl,
+} from '@mui/material';
 import { Search as SearchIcon } from '@mui/icons-material';
-import category from '../assets/data/category.json';
-import city from '../assets/data/city.json';
+import cityList from '../assets/data/city.json';
+import { useNavigate } from 'react-router-dom';
+import { stringify } from 'querystring';
+import { TFilter, EType } from '../types';
 
 const Title = styled.div`
   position: relative;
@@ -104,11 +114,6 @@ const TitleInfo = styled(Typography)`
   }
 `;
 
-type TFilter = {
-  category: string;
-  city: string;
-};
-
 type TProps = {
   image: 'homepage' | 'attraction' | 'food';
 };
@@ -126,11 +131,43 @@ const switchImage = (image: 'homepage' | 'attraction' | 'food') => {
   }
 };
 
+const typeList = [
+  {
+    id: EType.ATTRACTION,
+    type: EType.ATTRACTION,
+    value: '景點',
+  },
+  {
+    id: EType.FOOD,
+    type: EType.FOOD,
+    value: '美食',
+  },
+  {
+    id: EType.ACTIVITY,
+    type: EType.ACTIVITY,
+    value: '活動',
+  },
+];
+
 const SearchTitle = ({ image }: TProps) => {
   const [filter, setFilter] = useState<TFilter>({
-    category: '',
-    city: '',
+    type: typeList[0].type,
+    city: cityList[0].value,
+    keyword: '',
   });
+
+  const navigation = useNavigate();
+  const handleSearch = () => {
+    const search = stringify({
+      keyword: filter.keyword,
+      type: filter.type,
+      city: filter.city,
+    });
+    navigation({
+      pathname: '/search',
+      search,
+    });
+  };
 
   return (
     <Title>
@@ -139,7 +176,9 @@ const SearchTitle = ({ image }: TProps) => {
       </Image>
       <Content>
         <TitleLogo />
-        <TitleInfo variant="h4">台北、台中、台南、屏東、宜蘭......遊遍台灣</TitleInfo>
+        <TitleInfo variant="h4">
+          台北、台中、台南、屏東、宜蘭......遊遍台灣
+        </TitleInfo>
         <TextField
           id="keyword"
           placeholder="搜尋關鍵字"
@@ -148,6 +187,8 @@ const SearchTitle = ({ image }: TProps) => {
           sx={{ height: 40 }}
           fullWidth
           margin="normal"
+          value={filter.keyword}
+          onChange={(e) => setFilter({ ...filter, keyword: e.target.value })}
         />
         <Stack direction="row" spacing={'6px'}>
           <FormControl sx={{ flexGrow: 1 }}>
@@ -158,29 +199,33 @@ const SearchTitle = ({ image }: TProps) => {
                   display: 'none',
                 },
               })}
-              value={filter.category}
+              value={filter.type}
               displayEmpty
-              onChange={(e) => setFilter({ ...filter, category: e.target.value })}
+              onChange={(e) =>
+                setFilter({ ...filter, type: e.target.value as EType })
+              }
             >
               <MenuItem disabled value="">
                 選擇類別
               </MenuItem>
-              {category.map((ele) => (
-                <MenuItem value={ele.value} key={ele.id}>
-                  {ele.category}
+              {typeList.map((ele) => (
+                <MenuItem value={ele.type} key={ele.id}>
+                  {ele.value}
                 </MenuItem>
               ))}
             </Select>
             <NativeSelect
-              value={filter.category}
-              onChange={(e) => setFilter({ ...filter, category: e.target.value })}
+              value={filter.type}
+              onChange={(e) =>
+                setFilter({ ...filter, type: e.target.value as EType })
+              }
             >
               <option disabled value="">
                 選擇類別
               </option>
-              {category.map((ele) => (
-                <option value={ele.value} key={ele.id}>
-                  {ele.category}
+              {typeList.map((ele) => (
+                <option value={ele.type} key={ele.id}>
+                  {ele.value}
                 </option>
               ))}
             </NativeSelect>
@@ -200,7 +245,7 @@ const SearchTitle = ({ image }: TProps) => {
               <MenuItem disabled value="">
                 選擇縣市
               </MenuItem>
-              {city.map((ele) => (
+              {cityList.map((ele) => (
                 <MenuItem value={ele.value} key={ele.value}>
                   {ele.city}
                 </MenuItem>
@@ -213,7 +258,7 @@ const SearchTitle = ({ image }: TProps) => {
               <option disabled value="">
                 選擇縣市
               </option>
-              {city.map((ele) => (
+              {cityList.map((ele) => (
                 <option value={ele.value} key={ele.value}>
                   {ele.city}
                 </option>
@@ -221,7 +266,12 @@ const SearchTitle = ({ image }: TProps) => {
             </NativeSelect>
           </FormControl>
           <FormControl sx={{ width: 40 }}>
-            <Button variant="contained" color="primary" sx={{ minWidth: 40, height: 40 }}>
+            <Button
+              variant="contained"
+              color="primary"
+              sx={{ minWidth: 40, height: 40 }}
+              onClick={handleSearch}
+            >
               <SearchIcon sx={{ color: '#fff' }} />
             </Button>
           </FormControl>

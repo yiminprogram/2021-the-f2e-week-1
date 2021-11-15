@@ -8,6 +8,7 @@ import { TData } from '../types';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { stringify } from 'querystring';
 import { checkText } from '../utils';
+import Image from '../components/Image';
 
 const Card = styled('article')(
   ({ theme }) => ` 
@@ -55,15 +56,9 @@ const Card = styled('article')(
 `,
 );
 
-const Image = styled('div')`
+const ImageContainer = styled('div')`
   margin-bottom: 0.8rem;
   height: 200px;
-
-  > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
 `;
 
 const Location = styled('div')`
@@ -91,16 +86,16 @@ const ImageCard = (data: TData) => {
   const handleOpen = () => {
     openModal(data);
     navigation(
-      { pathname: `/${data.id}`, search },
+      { pathname: `info/${data.id}`, search },
       { state: { background: location } },
     );
   };
 
   return (
     <Card onClick={handleOpen}>
-      <Image>
-        <img src={data.picture} alt="error" />
-      </Image>
+      <ImageContainer>
+        <Image src={data.picture} />
+      </ImageContainer>
       <Typography variant="h4" sx={titleStyle}>
         {data.name}
       </Typography>

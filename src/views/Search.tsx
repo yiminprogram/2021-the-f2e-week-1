@@ -46,6 +46,7 @@ const ImageContainer = styled('div')`
 
 const Search = () => {
   const [data, setData] = useState<TData[]>([]);
+  const [notFound, setNotFound] = useState(false);
   const [page, setPage] = useState<number>(1);
 
   // get filter query
@@ -55,7 +56,15 @@ const Search = () => {
   ) as { type: EType; city: string; keyword: string };
 
   useEffect(() => {
-    getSearch({ type, city, keyword }).then((res) => setData(res));
+    getSearch({ type, city, keyword }).then((res) => {
+      if (res.length !== 0) {
+        setNotFound(false);
+      } else {
+        setNotFound(true);
+        window.scrollTo({ top: 700, left: 0 });
+      }
+      setData(res);
+    });
   }, [type, city, keyword]);
 
   const handlePage = (e: ChangeEvent<unknown>, value: number) => {
@@ -73,7 +82,7 @@ const Search = () => {
           位置：
           <Result>{getCity(city)}</Result>
         </Typography>
-        {data.length === 0 ? (
+        {notFound && (
           <NotFound>
             <ImageContainer>
               <img src={NotFoundImage} alt="not-found-imaeg" />
@@ -85,7 +94,8 @@ const Search = () => {
               很抱歉，找不到符合此搜尋相關的內容
             </Typography>
           </NotFound>
-        ) : (
+        )}
+        {data.length !== 0 && (
           <Grid container spacing={2}>
             {data.slice((page - 1) * 16, page * 16).map((ele) => (
               <Grid item xs={12} sm={6} md={4} xl={3} key={ele.id}>

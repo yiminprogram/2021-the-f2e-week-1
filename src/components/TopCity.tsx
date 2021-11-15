@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Room } from '@mui/icons-material';
 import Title from './Title';
 import data from '../assets/data/top-ciyt.json';
+import Image from './Image';
 
 type TStyle = {
   height: string;
@@ -32,16 +33,10 @@ const CityCard = styled.div<TStyle>`
   background-color: #fff;
 `;
 
-const Image = styled.div`
+const ImageContainer = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-
-  > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
 
   &::before {
     content: '';
@@ -101,9 +96,9 @@ const TopCity = () => {
               return (
                 <SwiperSlide key={ele.city}>
                   <CityCard height="350">
-                    <Image>
-                      <img src={ele.picture} alt="top-city" />
-                    </Image>
+                    <ImageContainer>
+                      <Image src={ele.picture} />
+                    </ImageContainer>
                     <CityCardInfo>
                       <Room fontSize="large" sx={{ marginBottom: '0.5rem' }} />
                       <Typography variant="h1">{ele.city}</Typography>
@@ -115,18 +110,18 @@ const TopCity = () => {
               return (
                 <SwiperSlide key={ele.city}>
                   <CityCard height="171">
-                    <Image>
-                      <img src={ele.picture} alt="top-city" />
-                    </Image>
+                    <ImageContainer>
+                      <Image src={ele.picture} />
+                    </ImageContainer>
                     <CityCardInfo>
                       <Room fontSize="large" sx={{ marginBottom: '0.5rem' }} />
                       <Typography variant="h1">{ele.city}</Typography>
                     </CityCardInfo>
                   </CityCard>
                   <CityCard height="171">
-                    <Image>
-                      <img src={data[idx + 1].picture} alt="top-city" />
-                    </Image>
+                    <ImageContainer>
+                      <Image src={data[idx + 1].picture} />
+                    </ImageContainer>
                     <CityCardInfo>
                       <Room fontSize="large" sx={{ marginBottom: '0.5rem' }} />
                       <Typography variant="h1">{data[idx + 1].city}</Typography>

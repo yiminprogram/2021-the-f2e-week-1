@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import homepage from '../assets/images/homepage.jpg';
 import attraction from '../assets/images/attraction.jpg';
 import food from '../assets/images/food.jpg';
+import Image from '../components/Image';
 import TitleLogo from '../assets/logo/TitleLogo';
 import {
   Select,
@@ -60,14 +61,8 @@ const Title = styled.div`
   }
 `;
 
-const Image = styled.div`
+const ImageContainer = styled.div`
   height: 100%;
-
-  > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
 
   @media screen and (max-width: 900px) {
     display: none;
@@ -127,7 +122,7 @@ const switchImage = (image: 'homepage' | 'attraction' | 'food') => {
     case 'food':
       return food;
     default:
-      return undefined;
+      return '';
   }
 };
 
@@ -169,15 +164,14 @@ const SearchTitle = ({ image }: TProps) => {
       pathname: '/search',
       search,
     });
-    window.scrollTo({ top: 700, left: 0 });
     setFilter(initial);
   };
 
   return (
     <Title>
-      <Image>
-        <img src={switchImage(image)} alt="autumn" />
-      </Image>
+      <ImageContainer>
+        <Image src={switchImage(image)} />
+      </ImageContainer>
       <Content>
         <TitleLogo />
         <TitleInfo variant="h4">

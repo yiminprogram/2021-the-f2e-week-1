@@ -1,5 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import styled from '@emotion/styled';
+import Image from './Image';
 
 const Container = styled.div`
   .swiper-container {
@@ -8,12 +9,6 @@ const Container = styled.div`
 
   .swiper-wrapper {
     height: 93%;
-  }
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
 `;
 
@@ -26,7 +21,7 @@ const SwiperImage = ({ picture }: TImage) => {
     <Container>
       <Swiper pagination>
         <SwiperSlide>
-          <img src={picture} alt="error" />
+          <Image src={picture} />
         </SwiperSlide>
       </Swiper>
     </Container>
